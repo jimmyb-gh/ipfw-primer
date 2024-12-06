@@ -1,0 +1,42 @@
+
+Manifest of dnshost scripts and file.
+
+File: dnshost_usrlocaletc_namedb.tgz
+
+  Description: Contains the configuration for the BIND 9 DNS services that run on this machine.
+
+  Installation: 
+
+    Install bind9 package first, then untar this collection as follows:
+    
+    # cd /usr/local/etc
+    # tar xvzf dnshost_usrlocaletc_namedb.tgz 
+
+  Contents:
+
+    $ tar tvzf dnshost_usrlocaletc_namedb.tgz 
+    drwxr-xr-x  0 root   wheel       0 Nov 19 12:00 namedb/
+    -rw-r--r--  0 bind   bind     2403 Nov 19 11:59 namedb/bind.keys
+    drwxr-xr-x  0 bind   bind        0 Nov 19 11:59 namedb/dynamic/
+    -rw-r--r--  0 bind   bind     2618 Dec  2 12:34 namedb/named.conf
+    -rw-r--r--  0 bind   bind    21992 Nov 19 11:59 namedb/named.conf.sample
+    -rw-r--r--  0 bind   bind      927 Nov 19 11:59 namedb/named.root
+    -rw-r--r--  0 bind   bind     3317 Nov 19 11:59 namedb/named.root.SAVE
+    drwxr-xr-x  0 bind   bind        0 Dec  2 15:35 namedb/primary/
+    -rw-------  0 bind   bind      100 Nov 19 11:59 namedb/rndc.key
+    drwxr-xr-x  0 bind   bind        0 Nov 19 11:59 namedb/secondary/
+    drwxr-xr-x  0 bind   bind        0 Nov 19 11:59 namedb/working/
+    -rw-r--r--  0 bind   bind      297 Nov 19 11:59 namedb/working/managed-keys.bind
+    -rw-r--r--  0 bind   bind     1241 Nov 19 11:59 namedb/working/managed-keys.bind.jnl
+    -rw-r--r--  0 bind   bind      355 Nov 19 11:59 namedb/primary/ptr_198.51
+    -rw-r--r--  0 bind   bind      465 Nov 19 11:59 namedb/primary/ptr_203.0
+    -rw-r--r--  0 bind   bind      693 Dec  1 19:29 namedb/primary/example.com
+    -rw-r--r--  0 bind   bind      148 Nov 19 11:59 namedb/primary/empty
+    -rw-r--r--  0 bind   bind      407 Nov 19 14:12 namedb/primary/ptr_ipv6
+    -rw-r--r--  0 bind   bind      287 Dec  2 15:35 namedb/primary/managed-keys.bind
+    -rw-r--r--  0 bind   bind     2184 Dec  2 15:35 namedb/primary/managed-keys.bind.jnl
+    -rw-r--r--  0 bind   bind      226 Nov 19 11:59 namedb/primary/localhost-reverse
+    -rw-r--r--  0 bind   bind      158 Nov 19 11:59 namedb/primary/localhost-forward
+    -rw-r--r--  0 root   bind      351 Dec  1 19:30 namedb/primary/ptr_192.168
+    $ 
+----------

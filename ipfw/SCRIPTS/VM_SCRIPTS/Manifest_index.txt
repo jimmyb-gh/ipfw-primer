@@ -1,0 +1,16 @@
+
+File: index.html
+
+  Description: Modified Nginx default index.html file.
+               Each index.html file has the hostname embedded in the file:
+               For example:
+               <p>THIS IS THE EXTERNAL1 VM.</p>
+
+
+  Installation: 
+
+    Install nginx package first, then copy this file as follows:
+    
+    # cp index.html  /usr/local/www/nginx-dist/ 
+    # 
+----------

@@ -1,0 +1,31 @@
+
+Manifest of ipfw VM scripts and files.
+
+File: ipfw_root_bin.tgz
+
+  Description: Contains the scripts needed for performing the examples in the IPFW Primer book.
+
+  Installation: 
+
+    Download the file to /root 
+
+    # cd /root
+    # tar xvzf ipfw_root_bin.tgz
+
+  Contents:
+
+    $ tar tvzf ipfw_root_bin.tgz
+    drwxr-xr-x  0 1001   1001        0 Dec  5 13:35 bin/
+    -rw-r--r--  0 1001   1001      844 Nov 15 21:29 bin/tcont.sh
+    -rw-r--r--  0 1001   1001     1008 Nov 15 21:29 bin/tcon.sh
+    -rw-r--r--  0 1001   1001     1067 Nov 15 21:29 bin/tconr.sh
+    -rw-r--r--  0 1001   1001      307 Nov 15 21:29 bin/tserv.sh
+    -rw-r--r--  0 1001   1001     1023 Nov 15 21:31 bin/ucon.sh
+    -rw-r--r--  0 1001   1001      478 Nov 15 21:29 bin/userv.sh
+    -rw-r--r--  0 1001   1001      953 Nov 15 21:29 bin/uconr.sh
+    -rw-r--r--  0 1001   1001      455 Nov 15 21:29 bin/userv3.sh
+    -rw-r--r--  0 1001   1001      985 Nov 15 21:46 bin/ucont.sh
+    -rw-r--r--  0 1001   1001      455 Nov 15 21:29 bin/tserv3.sh
+    -rw-r--r--  0 1001   1001      597 Nov 15 21:29 bin/userv5.sh
+    $
+----------
