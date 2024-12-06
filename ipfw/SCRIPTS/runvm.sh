@@ -34,7 +34,8 @@
 #set -x
 
 #WKDIR=$HOME/LAB/SCRIPTS
-export WKDIR=$HOME/ipfw
+#export WKDIR=$HOME/ipfw
+export WKDIR=.
 
 echo "[${WKDIR}]"
 
@@ -51,7 +52,7 @@ usage() {
 
 CURDIR=`pwd`
 
-if [ "X${CURDIR}" != "X${WKDIR}/SCRIPTS" ]
+if [ ! -f "${CURDIR}/vm_envs.sh" ]
 then
     usage;
 fi
@@ -65,11 +66,13 @@ fi
 # Functions for each VM
 
 dnshost_vm () {
+set -x
   # DNS host
   echo "in function: [${_DNSHOST_telnetport}]"
   xfce4-terminal --window --geometry="80x24+50+50" --zoom="-1" \
-               -T "${_DNSHOST_name}" -e "bash -c \"cd ${WKDIR}/SCRIPTS && sudo /bin/sh dnshost.sh ; bash\"" \
-        --tab  -T "${_DNSHOST_name}" -e "bash -c \"cd ${WKDIR}/SCRIPTS && sleep 2 && (. ./vm_envs.sh;telnet -4  localhost ${_DNSHOST_telnetport}); bash\""
+               -T "${_DNSHOST_name}" -e "bash -c \"cd ${WKDIR}/../SCRIPTS && sudo /bin/sh dnshost.sh ; bash\"" \
+        --tab  -T "${_DNSHOST_name}" -e "bash -c \"cd ${WKDIR}/../SCRIPTS && sleep 2 && (. ./vm_envs.sh;telnet -4  localhost ${_DNSHOST_telnetport}); bash\""
+set +x
   return
 }
 
@@ -77,8 +80,8 @@ external1_vm () {
   # external1
   echo "in function: [${_EXTERNAL1_telnetport}]"
   xfce4-terminal --window --geometry="80x24+75+75" --zoom="-1" \
-               -T "${_EXTERNAL1_name}" -e "bash -c \"cd $WKDIR/SCRIPTS && sudo /bin/sh external1.sh ; bash\"" \
-        --tab  -T "${_EXTERNAL1_name}" -e "bash -c \"cd $WKDIR/SCRIPTS && sleep 2 && (. ./vm_envs.sh;telnet localhost ${_EXTERNAL1_telnetport}); bash\""
+               -T "${_EXTERNAL1_name}" -e "bash -c \"cd $WKDIR/../SCRIPTS && sudo /bin/sh external1.sh ; bash\"" \
+        --tab  -T "${_EXTERNAL1_name}" -e "bash -c \"cd $WKDIR/../SCRIPTS && sleep 2 && (. ./vm_envs.sh;telnet localhost ${_EXTERNAL1_telnetport}); bash\""
   return
 }
 
@@ -86,8 +89,8 @@ external2_vm () {
   # external2
   echo "in function: [${_EXTERNAL2_telnetport}]"
   xfce4-terminal --window --geometry="80x24+100+100" --zoom="-1" \
-               -T "${_EXTERNAL2_name}" -e "bash -c \"cd $WKDIR/SCRIPTS && sudo /bin/sh external2.sh ; bash\"" \
-        --tab  -T "${_EXTERNAL2_name}" -e "bash -c \"cd $WKDIR/SCRIPTS && sleep 2 && (. ./vm_envs.sh;telnet localhost ${_EXTERNAL2_telnetport}); bash\""
+               -T "${_EXTERNAL2_name}" -e "bash -c \"cd $WKDIR/../SCRIPTS && sudo /bin/sh external2.sh ; bash\"" \
+        --tab  -T "${_EXTERNAL2_name}" -e "bash -c \"cd $WKDIR/../SCRIPTS && sleep 2 && (. ./vm_envs.sh;telnet localhost ${_EXTERNAL2_telnetport}); bash\""
   return
 }
 
@@ -95,8 +98,8 @@ external3_vm () {
   # external3
   echo "in function: [${_EXTERNAL3_telnetport}]"
   xfce4-terminal --window --geometry="80x24+125+125" --zoom="-1" \
-               -T "${_EXTERNAL3_name}" -e "bash -c \"cd $WKDIR/SCRIPTS && sudo /bin/sh external3.sh ; bash\"" \
-        --tab  -T "${_EXTERNAL3_name}" -e "bash -c \"cd $WKDIR/SCRIPTS && sleep 2 && (. ./vm_envs.sh;telnet localhost ${_EXTERNAL3_telnetport}); bash\""
+               -T "${_EXTERNAL3_name}" -e "bash -c \"cd $WKDIR/../SCRIPTS && sudo /bin/sh external3.sh ; bash\"" \
+        --tab  -T "${_EXTERNAL3_name}" -e "bash -c \"cd $WKDIR/../SCRIPTS && sleep 2 && (. ./vm_envs.sh;telnet localhost ${_EXTERNAL3_telnetport}); bash\""
   return
 }
 
@@ -104,8 +107,8 @@ firewall_vm () {
   # Firewall
   echo "in function: [${_FIREWALL_telnetport}]"
   xfce4-terminal --window --geometry="80x24+150+150" --zoom="-1" \
-               -T "${_FIREWALL_name}" -e "bash -c \"cd $WKDIR/SCRIPTS && sudo /bin/sh firewall.sh ; bash\"" \
-        --tab  -T "${_FIREWALL_name}" -e "bash -c \"cd $WKDIR/SCRIPTS && sleep 2 && (. ./vm_envs.sh; telnet localhost ${_FIREWALL_telnetport}); bash\""
+               -T "${_FIREWALL_name}" -e "bash -c \"cd $WKDIR/../SCRIPTS && sudo /bin/sh firewall.sh ; bash\"" \
+        --tab  -T "${_FIREWALL_name}" -e "bash -c \"cd $WKDIR/../SCRIPTS && sleep 2 && (. ./vm_envs.sh; telnet localhost ${_FIREWALL_telnetport}); bash\""
   return
 }
 
@@ -113,8 +116,8 @@ firewall2_vm () {
   # Firewall2
   echo "in function: [${_FIREWALL2_telnetport}]"
   xfce4-terminal --window --geometry="80x24+175+175" --zoom="-1" \
-               -T "${_FIREWALL2_name}" -e "bash -c \"cd $WKDIR/SCRIPTS && sudo /bin/sh firewall2.sh ; bash\"" \
-        --tab  -T "${_FIREWALL2_name}" -e "bash -c \"cd $WKDIR/SCRIPTS && sleep 2 && (. ./vm_envs.sh;telnet localhost ${_FIREWALL2_telnetport}); bash\""
+               -T "${_FIREWALL2_name}" -e "bash -c \"cd $WKDIR/../SCRIPTS && sudo /bin/sh firewall2.sh ; bash\"" \
+        --tab  -T "${_FIREWALL2_name}" -e "bash -c \"cd $WKDIR/../SCRIPTS && sleep 2 && (. ./vm_envs.sh;telnet localhost ${_FIREWALL2_telnetport}); bash\""
   return
 }
 
@@ -122,8 +125,8 @@ internal_vm () {
   # internal
   echo "in function: [${_INTERNAL_telnetport}]"
   xfce4-terminal --window --geometry="80x24+200+200" --zoom="-1" \
-               -T "${_INTERNAL_name}" -e "bash -c \"cd $WKDIR/SCRIPTS && sudo /bin/sh internal.sh ; bash\"" \
-        --tab  -T "${_INTERNAL_name}" -e "bash -c \"cd $WKDIR/SCRIPTS && sleep 2 && (. ./vm_envs.sh;telnet localhost ${_INTERNAL_telnetport}); bash\""
+               -T "${_INTERNAL_name}" -e "bash -c \"cd $WKDIR/../SCRIPTS && sudo /bin/sh internal.sh ; bash\"" \
+        --tab  -T "${_INTERNAL_name}" -e "bash -c \"cd $WKDIR/../SCRIPTS && sleep 2 && (. ./vm_envs.sh;telnet localhost ${_INTERNAL_telnetport}); bash\""
   return
 }
 
@@ -131,8 +134,8 @@ v6only_vm () {
   # v6only
   echo "in function: [${_V6ONLY_telnetport}]"
   xfce4-terminal --window --geometry="80x24+225+225" --zoom="-1" \
-               -T "${_V6ONLY_name}" -e "bash -c \"cd $WKDIR/SCRIPTS && sudo /bin/sh v6only.sh ; bash\"" \
-        --tab  -T "${_V6ONLY_name}" -e "bash -c \"cd $WKDIR/SCRIPTS && sleep 2 && (. ./vm_envs.sh;telnet localhost ${_V6ONLY_telnetport}); bash\""
+               -T "${_V6ONLY_name}" -e "bash -c \"cd $WKDIR/../SCRIPTS && sudo /bin/sh v6only.sh ; bash\"" \
+        --tab  -T "${_V6ONLY_name}" -e "bash -c \"cd $WKDIR/../SCRIPTS && sleep 2 && (. ./vm_envs.sh;telnet localhost ${_V6ONLY_telnetport}); bash\""
   return
 }
 

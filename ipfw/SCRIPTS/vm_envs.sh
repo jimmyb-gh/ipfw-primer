@@ -114,7 +114,9 @@
 #
 #
 
-export _BASE=/home/jpb/ipfw
+#export _BASE=/home/jpb/ipfw
+# Make relocatable.
+export _BASE=.
  
 # Bridge and tap info
 export _FIREWALL_tap0=tap0
@@ -149,14 +151,14 @@ export _DNSHOST_hdsize=4G
 export _FBSD_ISO=${_BASE}/ISO/fbsd.iso
 
 # Boot iso locations
-export _DNSHOST_ISO=${_BASE}/ISO/fbsd.iso
-export _EXTERNAL1_ISO=${_BASE}/ISO/fbsd.iso
-export _EXTERNAL2_ISO=${_BASE}/ISO/fbsd.iso
-export _EXTERNAL3_ISO=${_BASE}/ISO/fbsd.iso
-export _FIREWALL_ISO=${_BASE}/ISO/fbsd.iso
-export _FIREWALL2_ISO=${_BASE}/ISO/fbsd.iso
-export _INTERNAL_ISO=${_BASE}/ISO/fbsd.iso
-export _V6ONLY_ISO=${_BASE}/ISO/fbsd.iso
+export _DNSHOST_ISO=${_BASE}/../ISO/fbsd.iso
+export _EXTERNAL1_ISO=${_BASE}/../ISO/fbsd.iso
+export _EXTERNAL2_ISO=${_BASE}/../ISO/fbsd.iso
+export _EXTERNAL3_ISO=${_BASE}/../ISO/fbsd.iso
+export _FIREWALL_ISO=${_BASE}/../ISO/fbsd.iso
+export _FIREWALL2_ISO=${_BASE}/../ISO/fbsd.iso
+export _INTERNAL_ISO=${_BASE}/../ISO/fbsd.iso
+export _V6ONLY_ISO=${_BASE}/../ISO/fbsd.iso
 
 # Memory sizes
 export _DNSHOST_mem=1024
@@ -170,14 +172,14 @@ export _V6ONLY_mem=1024
 
 
 # Qemu disk image locations.
-export _DNSHOST_img=${_BASE}/VM/dnshost.qcow2
-export _EXTERNAL1_img=${_BASE}/VM/external1.qcow2
-export _EXTERNAL2_img=${_BASE}/VM/external2.qcow2
-export _EXTERNAL3_img=${_BASE}/VM/external3.qcow2
-export _FIREWALL_img=${_BASE}/VM/firewall.qcow2
-export _FIREWALL2_img=${_BASE}/VM/firewall2.qcow2
-export _INTERNAL_img=${_BASE}/VM/internal.qcow2
-export _V6ONLY_img=${_BASE}/VM/v6only.qcow2
+export _DNSHOST_img=${_BASE}/../VM/dnshost.qcow2
+export _EXTERNAL1_img=${_BASE}/../VM/external1.qcow2
+export _EXTERNAL2_img=${_BASE}/../VM/external2.qcow2
+export _EXTERNAL3_img=${_BASE}/../VM/external3.qcow2
+export _FIREWALL_img=${_BASE}/../VM/firewall.qcow2
+export _FIREWALL2_img=${_BASE}/../VM/firewall2.qcow2
+export _INTERNAL_img=${_BASE}/../VM/internal.qcow2
+export _V6ONLY_img=${_BASE}/../VM/v6only.qcow2
 
 # MAC addresses
 export _DNSHOST_mac1=02:49:53:53:53:53
@@ -204,14 +206,14 @@ export _INTERNAL_name=INTERNAL
 export _V6ONLY_name=V6ONLY
 
 # Slash images
-export _DNS_splash=${_BASE}/BMP/dns_splash_640x480.bmp
-export _EX1_splash=${_BASE}/BMP/external1_splash_640x480.bmp
-export _EX2_splash=${_BASE}/BMP/external2_splash_640x480.bmp
-export _EX3_splash=${_BASE}/BMP/external3_splash_640x480.bmp
-export _FW_splash=${_BASE}/BMP/ipfw_splash_640x480.bmp
-export _FW2_splash=${_BASE}/BMP/ipfw2_splash_640x480.bmp
-export _INT_splash=${_BASE}/BMP/internal_splash_640x480.bmp
-export _V6_splash=${_BASE}/BMP/ipv6_splash_640x480.bmp
+export _DNS_splash=${_BASE}/../BMP/dns_splash_640x480.bmp
+export _EX1_splash=${_BASE}/../BMP/external1_splash_640x480.bmp
+export _EX2_splash=${_BASE}/../BMP/external2_splash_640x480.bmp
+export _EX3_splash=${_BASE}/../BMP/external3_splash_640x480.bmp
+export _FW_splash=${_BASE}/../BMP/ipfw_splash_640x480.bmp
+export _FW2_splash=${_BASE}/../BMP/ipfw2_splash_640x480.bmp
+export _INT_splash=${_BASE}/../BMP/internal_splash_640x480.bmp
+export _V6_splash=${_BASE}/../BMP/ipv6_splash_640x480.bmp
 
 #
 # Telnet ports
