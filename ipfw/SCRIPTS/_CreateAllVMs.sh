@@ -37,3 +37,5 @@ done
 
 echo
 echo "Done."
+
+exit
