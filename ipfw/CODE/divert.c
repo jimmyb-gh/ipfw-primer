@@ -7,8 +7,11 @@
 #include <stdio.h>
 #include <string.h>
 #include <err.h>
+#include <sys/systm.h>
 
 #define DIVERT_PORT 700
+
+void hexdump(void *ptr,	int length, const char *hdr, int flags);
 
 int
 main(int argc, char *argv[])
@@ -17,7 +20,11 @@ main(int argc, char *argv[])
 	struct sockaddr_in sin;
 	socklen_t sin_len;
 
-	fd = socket(AF_INET, SOCK_RAW, IPPROTO_DIVERT);
+
+	printf("Opening divert on port %d\n",DIVERT_PORT);
+
+	/* OLD WAY fd = socket(AF_INET, SOCK_RAW, IPPROTO_DIVERT);*/
+	fd = socket(PF_DIVERT, SOCK_RAW, 0);
 	if (fd == -1)
 		err(1, "socket");
 
@@ -38,7 +45,12 @@ main(int argc, char *argv[])
 		struct ip *ip;
 		struct tcphdr *th;
 		int hlen;
-		char src[48], dst[48];
+		char src[64], dst[64], printbuff[12];
+		
+
+		memset(src, 0, sizeof(src));
+		memset(dst, 0, sizeof(dst));
+		memset(printbuff, 0, sizeof(printbuff));
 
 		memset(packet, 0, sizeof(packet));
 		n = recvfrom(fd, packet, sizeof(packet), 0,
@@ -76,6 +88,17 @@ main(int argc, char *argv[])
 		    dst,
 		    ntohs(th->th_dport)
 		);
+
+
+		/* dump the packet in hex and ascii
+		*
+		*/
+
+		hexdump((void *)packet, n, "|",0);
+
+
+
+
 
 		n = sendto(fd, packet, n, 0, (struct sockaddr *) &sin,
 		    sin_len);
