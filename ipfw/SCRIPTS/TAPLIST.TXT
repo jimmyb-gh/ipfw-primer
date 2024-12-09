@@ -1,0 +1,32 @@
+
+taplist.txt
+
+This file contains just the taps that are needed to 
+connect all VMs to one bridge for admin purposes:
+
+  +-----------------------------------------+
+  |                                         |
+  |                 bridge0                 |
+  |                                         |
+  +-+----+----+----+---+----+---+----+----+-+
+   /    /    /    /    |    |    \    \    \
+  tap0 tap1 tap2 tap3 tap5 tap6 tap7 tap9 host_interface
+   |    |    |    |    |    |    |    |    |
+   |    |    |    |    |    |    |    |    +- host interface
+   |    |    |    |    |    |    |    +- firewall2
+   |    |    |    |    |    |    +- dnshost
+   |    |    |    |    |    +- v6only
+   |    |    |    |    +- internal
+   |    |    |    +- external2
+   |    |    +- external2
+   |    +- external1
+   +- firewall 
+       
+
+The remaining taps are located on the VM listed:
+
+tap4  - firewall
+tap8  - dnshost
+tap10 - firewall2
+tap11 - dnshost
+

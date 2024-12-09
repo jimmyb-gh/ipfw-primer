@@ -91,14 +91,10 @@ main(int argc, char *argv[])
 
 
 		/* dump the packet in hex and ascii
-		*
+		*  dump the packet in hex and ascii with hexdump(3)
 		*/
 
 		hexdump((void *)packet, n, "|",0);
-
-
-
-
 
 		n = sendto(fd, packet, n, 0, (struct sockaddr *) &sin,
 		    sin_len);
