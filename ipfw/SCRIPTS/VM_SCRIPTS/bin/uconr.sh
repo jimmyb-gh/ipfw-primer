@@ -28,7 +28,7 @@ echo "SLEEPVAL = [$SLEEPVAL]"
 
 export CONN="203.0.113.50"
 export COUNT=1
-export MYIP=`ifconfig em0 | grep inet | awk '{print $2}'`
+export MYIP=`ifconfig em0 | grep inet | grep -v inet6 | awk '{print $2}'`
 export MYNAME="external1"
 
 

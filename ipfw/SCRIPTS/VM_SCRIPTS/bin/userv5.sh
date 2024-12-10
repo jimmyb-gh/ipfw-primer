@@ -11,7 +11,7 @@ kill -TERM $PID1 $PID2 $PID3 $PID4 $PID5
 trap zapall SIGINT
 
 
-export MYIP=`ifconfig em0 | grep inet | awk '{print $2}'`
+export MYIP=`ifconfig em0 | grep inet | grep -v inet6 | awk '{print $2}'`
 export PORT1=5656
 export PORT2=5657
 export PORT3=5658

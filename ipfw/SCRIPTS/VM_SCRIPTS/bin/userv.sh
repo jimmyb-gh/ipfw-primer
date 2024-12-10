@@ -27,7 +27,8 @@ kill -TERM $PID1
 
 trap zapall SIGINT
 
-export MYIP=`ifconfig em0 | grep inet | awk '{print $2}'`
+export MYIP=`ifconfig em0 | grep inet | grep -v inet6 | awk '{print $2}'`
+
 
 echo "Starting UDP listener on [$MYIP],[$PORT1]"
 

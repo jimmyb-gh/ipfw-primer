@@ -26,11 +26,10 @@ export CONN="203.0.113.50"
 #export CONN="10.10.10.50"
 export COUNT=1
 
-export MYIP=`ifconfig em0 | grep inet | awk '{print $2}'`
+export MYIP=`ifconfig em0 | grep inet | grep -v inet6 | awk '{print $2}'`
 export MYNAME="external1"
 
 
-export MYIP=`ifconfig em0 | grep inet | awk '{print $2}'`
 
 echo "UDP packet from [$MYIP],[$PORT1],[$COUNT]"
 echo "UDP packet from [$MYIP],[$PORT1],[$COUNT]"| ncat -u $CONN $PORT1
