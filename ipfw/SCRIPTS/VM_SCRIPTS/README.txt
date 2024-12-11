@@ -10,8 +10,8 @@ to all VMs.
 3. Make the script files executable:  find . -name "*.sh" -exec chmod 755 {} \;
 
 
-The file also contains an "index.html" file that should be copied to
-   /usr/local/www/nginx-dist
+Each directory also contains an "index.html" file that should be copied to
+/usr/local/www/nginx-dist on its respective virtual machine.
 
 
 
