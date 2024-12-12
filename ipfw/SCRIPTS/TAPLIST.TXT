@@ -17,7 +17,7 @@ connect all VMs to one bridge for admin purposes:
    |    |    |    |    |    |    +- dnshost
    |    |    |    |    |    +- v6only
    |    |    |    |    +- internal
-   |    |    |    +- external2
+   |    |    |    +- external3
    |    |    +- external2
    |    +- external1
    +- firewall 
