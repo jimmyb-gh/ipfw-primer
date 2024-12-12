@@ -9,7 +9,7 @@
 # Usage: ./bin/sh vmenv.sh
 #
 # vm_envs.sh - environment for setting up virtual machines
-#              for the IPFW exercise lab.
+#              for the IPFW example lab.
 #
 # Set the environment variables below (or keep the defaults)
 # Note that the default disk size for each virtual machine is
@@ -34,7 +34,7 @@
 # This will set up the devices needed by QEMU.
 #
 #
-#The file directory layout for the exercises is:
+#The file directory layout for the examples is:
 #
 #    ~/ipfw
 #          /SCRIPTS
