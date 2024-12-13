@@ -47,6 +47,7 @@
 #              firewall2.sh       (run script for firewall2 VM)
 #              internal.sh        (script to setup internal host)
 #              v6only.sh          (run script for IPv6 only VM)
+#              jail1.sh           (run script for VM with a jail)
 #              mkbr.sh            (script to create bridge and tap devices)
 #              vm_envs.sh         (script to manage all parameters)
 #              runvm.sh           (script to manage all virtual machines)
@@ -59,6 +60,7 @@
 #              ipfw2_splash_640x480.bmp
 #              ipfw_splash_640x480.bmp
 #              v6only_splash_640x480.bmp
+#              jail1_splash_640x480.bmp
 #              dnshost_splash_640x480.bmp
 #          /ISO
 #              fbsd.iso           (latest FreeBSD install iso)
@@ -71,6 +73,7 @@
 #              firewall2.qcow2      (Qemu disk image for firewall2)
 #              internal.qcow2       (Qemu disk image for an internal host)
 #              v6only.qcow2         (Qemu disk image for an ipv6only host)
+#              jail1.qcow2          (Qemu disk image for an VM with a jail)
 #
 #
 #  Start the VMs and install / test one at a time.
@@ -83,6 +86,7 @@
 #    sudo /bin/sh internal.sh
 #    sudo /bin/sh v6only.sh
 #    sudo /bin/sh dnshost.sh
+#    sudo /bin/sh jail1.sh
 #
 #  Each install should first utilize DHCP to get a valid IP address
 #  After install, proceed to update FreeBSD with "freebsd-update fetch install"
@@ -131,6 +135,7 @@ export _DNSHOST_tap8=tap8
 export _FIREWALL2_tap9=tap9
 export _FIREWALL2_tap10=tap10
 export _DNSHOST_tap11=tap11
+export _JAIL1_tap12=tap12
 
 export _bridge0_=bridge0
 export _bridge1_=bridge1
@@ -146,6 +151,7 @@ export _FIREWALL2_hdsize=4G
 export _INTERNAL_hdsize=4G
 export _V6ONLY_hdsize=4G
 export _DNSHOST_hdsize=4G
+export _JAIL1_hdsize=8G
 
 # Is this needed anymore?
 export _FBSD_ISO=${_BASE}/ISO/fbsd.iso
@@ -159,6 +165,7 @@ export _FIREWALL_ISO=${_BASE}/../ISO/fbsd.iso
 export _FIREWALL2_ISO=${_BASE}/../ISO/fbsd.iso
 export _INTERNAL_ISO=${_BASE}/../ISO/fbsd.iso
 export _V6ONLY_ISO=${_BASE}/../ISO/fbsd.iso
+export _JAIL1_ISO=${_BASE}/../ISO/fbsd.iso
 
 # Memory sizes
 export _DNSHOST_mem=1024
@@ -169,6 +176,7 @@ export _FIREWALL_mem=1024
 export _FIREWALL2_mem=1024
 export _INTERNAL_mem=1024
 export _V6ONLY_mem=1024
+export _JAIL1_mem=8192         # Note - larger memory for ZFS and jail
 
 
 # Qemu disk image locations.
@@ -180,6 +188,7 @@ export _FIREWALL_img=${_BASE}/../VM/firewall.qcow2
 export _FIREWALL2_img=${_BASE}/../VM/firewall2.qcow2
 export _INTERNAL_img=${_BASE}/../VM/internal.qcow2
 export _V6ONLY_img=${_BASE}/../VM/v6only.qcow2
+export _JAIL1_img=${_BASE}/../VM/jail1.qcow2
 
 # MAC addresses
 export _DNSHOST_mac1=02:49:53:53:53:53
@@ -194,6 +203,7 @@ export _FIREWALL_mac2=02:49:50:46:57:42
 export _FIREWALL2_mac2=02:49:50:22:22:22
 export _INTERNAL_mac=02:49:4E:54:0a:42
 export _V6ONLY_mac=02:49:de:ad:be:ef
+export _JAIL1_mac=02:49:ba:ad:ba:be
 
 # VM names
 export _DNSHOST_name=DNSHOST
@@ -204,6 +214,7 @@ export _FIREWALL_name=FIREWALL
 export _FIREWALL2_name=FIREWALL2
 export _INTERNAL_name=INTERNAL
 export _V6ONLY_name=V6ONLY
+export _JAIL1_name=JAIL1
 
 # Slash images
 export _DNS_splash=${_BASE}/../BMP/dns_splash_640x480.bmp
@@ -214,6 +225,7 @@ export _FW_splash=${_BASE}/../BMP/ipfw_splash_640x480.bmp
 export _FW2_splash=${_BASE}/../BMP/ipfw2_splash_640x480.bmp
 export _INT_splash=${_BASE}/../BMP/internal_splash_640x480.bmp
 export _V6_splash=${_BASE}/../BMP/ipv6_splash_640x480.bmp
+export _JAIL1_splash=${_BASE}/../BMP/jail1_splash_640x480.bmp
 
 #
 # Telnet ports
@@ -225,6 +237,7 @@ export _FIREWALL_telnetport=4450
 export _FIREWALL2_telnetport=4250
 export _INTERNAL_telnetport=44200
 export _V6ONLY_telnetport=4460
+export _JAIL1_telnetport=4470
 
 
 # Bridge and Tap configurations.

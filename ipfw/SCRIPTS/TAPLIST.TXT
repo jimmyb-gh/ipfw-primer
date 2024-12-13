@@ -4,15 +4,15 @@ taplist.txt
 This file contains just the taps that are needed to 
 connect all VMs to one bridge for admin purposes:
 
-  +-----------------------------------------+
-  |                                         |
-  |                 bridge0                 |
-  |                                         |
-  +-+----+----+----+---+----+---+----+----+-+
-   /    /    /    /    |    |    \    \    \
-  tap0 tap1 tap2 tap3 tap5 tap6 tap7 tap9 host_interface
+  +----------------------------------------------+
+  |                                              |
+  |                      bridge0                 |
+  |                                              |
+  +-+----+----+----+---+----+---+----+----+----+-+
+   /    /    /    /    |    |    \    \    \    \
+  tap0 tap1 tap2 tap3 tap5 tap6 tap7 tap9 tap12  host_interface
    |    |    |    |    |    |    |    |    |
-   |    |    |    |    |    |    |    |    +- host interface
+   |    |    |    |    |    |    |    |    +- jail1
    |    |    |    |    |    |    |    +- firewall2
    |    |    |    |    |    |    +- dnshost
    |    |    |    |    |    +- v6only
@@ -29,4 +29,4 @@ tap4  - firewall
 tap8  - dnshost
 tap10 - firewall2
 tap11 - dnshost
-
+tap12 - jail1
