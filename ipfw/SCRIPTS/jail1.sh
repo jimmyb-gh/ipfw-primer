@@ -36,12 +36,12 @@ echo [telnetport=${_JAIL1_telnetport}]
 #
 
 
-#echo 
-#echo "NOTE!!! telnet server running!  To start QEMU telnet to localhost $_JAIL1_telnetport"  
-#echo 
-#  -serial telnet:localhost:${_JAIL1_telnetport},server=on,wait=on \
+echo 
+echo "NOTE!!! telnet server running!  To start QEMU telnet to localhost $_JAIL1_telnetport"  
+echo 
 
 /usr/local/bin/qemu-system-x86_64 -monitor stdio \
+  -serial telnet:localhost:${_JAIL1_telnetport},server=on,wait=on \
   -cpu qemu64 \
   -vga cirrus \
   -m ${_JAIL1_mem}      \

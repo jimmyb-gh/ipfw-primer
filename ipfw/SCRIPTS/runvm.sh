@@ -130,10 +130,20 @@ internal_vm () {
   return
 }
 
+
+jail1_vm () {
+  # internal
+  echo "in function: [${_JAIL1_telnetport}]"
+  xfce4-terminal --window --geometry="80x24+225+225" --zoom="-1" \
+               -T "${_JAIL1_name}" -e "bash -c \"cd $WKDIR/../SCRIPTS && sudo /bin/sh jail1.sh ; bash\"" \
+        --tab  -T "${_JAIL1_name}" -e "bash -c \"cd $WKDIR/../SCRIPTS && sleep 2 && (. ./vm_envs.sh;telnet localhost ${_JAIL1_telnetport}); bash\""
+  return
+}
+
 v6only_vm () {
   # v6only
   echo "in function: [${_V6ONLY_telnetport}]"
-  xfce4-terminal --window --geometry="80x24+225+225" --zoom="-1" \
+  xfce4-terminal --window --geometry="80x24+250+250" --zoom="-1" \
                -T "${_V6ONLY_name}" -e "bash -c \"cd $WKDIR/../SCRIPTS && sudo /bin/sh v6only.sh ; bash\"" \
         --tab  -T "${_V6ONLY_name}" -e "bash -c \"cd $WKDIR/../SCRIPTS && sleep 2 && (. ./vm_envs.sh;telnet localhost ${_V6ONLY_telnetport}); bash\""
   return
@@ -193,6 +203,12 @@ do
         echo "internal ..."
 	echo "_INTERNAL_telnetport = [${_INTERNAL_telnetport}]"
         internal_vm
+      ;;
+
+    jail1)  
+        echo "jail1 ..."
+	echo "_JAIL1_telnetport = [${_JAIL1_telnetport}]"
+        jail1_vm
       ;;
 
     v6only)  

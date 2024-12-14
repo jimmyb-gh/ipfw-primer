@@ -12,21 +12,20 @@ connect all VMs to one bridge for admin purposes:
    /    /    /    /    |    |    \    \    \    \
   tap0 tap1 tap2 tap3 tap5 tap6 tap7 tap9 tap12  host_interface
    |    |    |    |    |    |    |    |    |
-   |    |    |    |    |    |    |    |    +- jail1
-   |    |    |    |    |    |    |    +- firewall2
-   |    |    |    |    |    |    +- dnshost
-   |    |    |    |    |    +- v6only
-   |    |    |    |    +- internal
-   |    |    |    +- external3
-   |    |    +- external2
-   |    +- external1
-   +- firewall 
+   |    |    |    |    |    |    |    |    +- jail1:em0
+   |    |    |    |    |    |    |    +- firewall2:em0
+   |    |    |    |    |    |    +- dnshost:em0
+   |    |    |    |    |    +- v6only:em0
+   |    |    |    |    +- internal:em0
+   |    |    |    +- external3:em0
+   |    |    +- external2:em0
+   |    +- external1:em0
+   +- firewall:em0
        
 
 The remaining taps are located on the VM listed:
 
-tap4  - firewall
-tap8  - dnshost
-tap10 - firewall2
-tap11 - dnshost
-tap12 - jail1
+tap4  - firewall:em1
+tap8  - dnshost:em1
+tap10 - firewall2:em1
+tap11 - dnshost:em2
