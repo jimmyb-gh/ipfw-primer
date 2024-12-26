@@ -90,7 +90,7 @@ main(int argc, char *argv[])
 		);
 
 
-		/* dump the packet in hex and ascii
+		/* 
 		*  dump the packet in hex and ascii with hexdump(3)
 		*/
 
