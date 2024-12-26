@@ -43,7 +43,7 @@ echo
   -m ${_V6ONLY_mem}      \
   -cdrom ${_V6ONLY_ISO}  \
   -boot order=cd,menu=on,splash=${_V6_splash},splash-time=3000 \
-  -drive if=none,id=drive0,cache=none,aio=threads,format=raw,file=${_V6ONLY_img} \
+  -drive if=none,id=drive0,cache=none,aio=threads,format=qcow2,file=${_V6ONLY_img} \
   -device virtio-blk,drive=drive0  \
   -netdev tap,id=nd0,ifname=${_V6ONLY_tap6},script=no,downscript=no \
   -device e1000,netdev=nd0,mac=${_V6ONLY_mac} \

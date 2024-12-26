@@ -1,9 +1,24 @@
 #!/bin/sh
-# FreeBSD qemu vm startup script
+# IPFW Primer
+# License: 3-clause BSD
+# Author: Jim Brown, jpb@jimby.name
+# Code: https://github.com/jimmyb-gh/ipfw-primer
 #
-# jail1.sh
+# FreeBSD QEMU VM startup script for jail1 VM.
 #
+# jail1.sh: FreeBSD QEMU VM startup script for v6only VM.
+# Usage: sudo /bin/sh jail1.sh
+# Note: Set up for serial console. Start another session and telnet to the port
+shown.
+# 
+# FreeBSD QEMU VM startup script
+# 
+# v6only.sh
+#  
 #set -x
+
+
+
 
 # pick up environment for this run
 . ./vm_envs.sh
@@ -36,9 +51,9 @@ echo [telnetport=${_JAIL1_telnetport}]
 #
 
 
-echo 
-echo "NOTE!!! telnet server running!  To start QEMU telnet to localhost $_JAIL1_telnetport"  
-echo 
+#echo 
+#echo "NOTE!!! telnet server running!  To start QEMU telnet to localhost $_JAIL1_telnetport"  
+#echo 
 
 /usr/local/bin/qemu-system-x86_64 -monitor stdio \
   -serial telnet:localhost:${_JAIL1_telnetport},server=on,wait=on \
@@ -47,7 +62,7 @@ echo
   -m ${_JAIL1_mem}      \
   -cdrom ${_JAIL1_ISO}  \
   -boot order=cd,menu=on,splash=${_JAIL1_splash},splash-time=3000 \
-  -drive if=none,id=drive0,cache=none,aio=threads,format=raw,file=${_JAIL1_img} \
+  -drive if=none,id=drive0,cache=none,aio=threads,format=qcow2,file=${_JAIL1_img} \
   -device virtio-blk,drive=drive0  \
   -netdev tap,id=nd0,ifname=${_JAIL1_tap12},script=no,downscript=no \
   -device e1000,netdev=nd0,mac=${_JAIL1_mac} \

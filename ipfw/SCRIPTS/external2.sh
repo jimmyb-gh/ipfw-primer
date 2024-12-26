@@ -42,7 +42,7 @@ echo
   -m ${_EXTERNAL2_mem}      \
   -cdrom ${_EXTERNAL2_ISO}  \
   -boot order=cd,menu=on,splash=${_EX2_splash},splash-time=3000 \
-  -drive if=none,id=drive0,cache=none,aio=threads,format=raw,file=${_EXTERNAL2_img} \
+  -drive if=none,id=drive0,cache=none,aio=threads,format=qcow2,file=${_EXTERNAL2_img} \
   -device virtio-blk,drive=drive0  \
   -netdev tap,id=nd0,ifname=${_EXTERNAL2_tap2},script=no,downscript=no \
   -device e1000,netdev=nd0,mac=${_EXTERNAL2_mac} \

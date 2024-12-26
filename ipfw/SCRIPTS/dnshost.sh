@@ -44,7 +44,7 @@ echo
   -m ${_DNSHOST_mem}      \
   -cdrom ${_DNSHOST_ISO}  \
   -boot order=cd,menu=on,splash=${_DNS_splash},splash-time=3000 \
-  -drive if=none,id=drive0,cache=none,aio=threads,format=raw,file=${_DNSHOST_img} \
+  -drive if=none,id=drive0,cache=none,aio=threads,format=qcow2,file=${_DNSHOST_img} \
   -device virtio-blk,drive=drive0  \
   -netdev tap,id=nd0,ifname=${_DNSHOST_tap7},script=no,downscript=no \
   -device e1000,netdev=nd0,mac=${_DNSHOST_mac1} \

@@ -48,7 +48,7 @@ echo
   -m ${_FIREWALL2_mem}      \
   -cdrom ${_FIREWALL_ISO}  \
   -boot order=cd,menu=on,splash=${_FW2_splash},splash-time=3000 \
-  -drive if=none,id=drive0,cache=none,aio=threads,format=raw,file=${_FIREWALL2_img} \
+  -drive if=none,id=drive0,cache=none,aio=threads,format=qcow2,file=${_FIREWALL2_img} \
   -device virtio-blk,drive=drive0  \
   -netdev tap,id=nd0,ifname=${_FIREWALL2_tap9},script=no,downscript=no \
   -device e1000,netdev=nd0,mac=${_FIREWALL2_mac1} \

@@ -44,7 +44,7 @@ echo
   -m ${_INTERNAL_mem}      \
   -cdrom ${_INTERNAL_ISO}  \
   -boot order=cd,menu=on,splash=${_INT_splash},splash-time=3000 \
-  -drive if=none,id=drive0,cache=none,aio=threads,format=raw,file=${_INTERNAL_img} \
+  -drive if=none,id=drive0,cache=none,aio=threads,format=qcow2,file=${_INTERNAL_img} \
   -device virtio-blk,drive=drive0  \
   -netdev tap,id=nd0,ifname=${_INTERNAL_tap5},script=no,downscript=no \
   -device e1000,netdev=nd0,mac=${_INTERNAL_mac} \
