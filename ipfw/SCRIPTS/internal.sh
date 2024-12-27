@@ -44,8 +44,9 @@ echo
   -m ${_INTERNAL_mem}      \
   -cdrom ${_INTERNAL_ISO}  \
   -boot order=cd,menu=on,splash=${_INT_splash},splash-time=3000 \
-  -drive if=none,id=drive0,cache=none,aio=threads,format=qcow2,file=${_INTERNAL_img} \
-  -device virtio-blk,drive=drive0  \
+  -blockdev driver=file,aio=threads,node-name=imgleft,filename=${_INTERNAL_img} \
+  -blockdev driver=qcow2,node-name=drive0,file=imgleft \
+  -device virtio-blk-pci,drive=drive0,bootindex=1 \
   -netdev tap,id=nd0,ifname=${_INTERNAL_tap5},script=no,downscript=no \
   -device e1000,netdev=nd0,mac=${_INTERNAL_mac} \
   -name \"${_INTERNAL_name}\"

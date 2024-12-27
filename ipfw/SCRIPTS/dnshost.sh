@@ -40,12 +40,13 @@ echo
 /usr/local/bin/qemu-system-x86_64  -monitor stdio \
   -serial telnet:localhost:${_DNSHOST_telnetport},server=on,wait=on \
   -cpu qemu64 \
-  -vga cirrus \
+  -vga std \
   -m ${_DNSHOST_mem}      \
   -cdrom ${_DNSHOST_ISO}  \
   -boot order=cd,menu=on,splash=${_DNS_splash},splash-time=3000 \
-  -drive if=none,id=drive0,cache=none,aio=threads,format=qcow2,file=${_DNSHOST_img} \
-  -device virtio-blk,drive=drive0  \
+  -blockdev driver=file,aio=threads,node-name=imgleft,filename=${_DNSHOST_img} \
+  -blockdev driver=qcow2,node-name=drive0,file=imgleft \
+  -device virtio-blk-pci,drive=drive0,bootindex=1 \
   -netdev tap,id=nd0,ifname=${_DNSHOST_tap7},script=no,downscript=no \
   -device e1000,netdev=nd0,mac=${_DNSHOST_mac1} \
   -netdev tap,id=nd1,ifname=${_DNSHOST_tap8},script=no,downscript=no \

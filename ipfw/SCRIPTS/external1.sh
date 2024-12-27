@@ -41,8 +41,9 @@ echo
   -m ${_EXTERNAL1_mem}      \
   -cdrom ${_EXTERNAL1_ISO}  \
   -boot order=cd,menu=on,splash=${_EX1_splash},splash-time=3000 \
-  -drive if=none,id=drive0,cache=none,aio=threads,format=qcow2,file=${_EXTERNAL1_img} \
-  -device virtio-blk,drive=drive0  \
+  -blockdev driver=file,aio=threads,node-name=imgleft,filename=${_EXTERNAL1_img} \
+  -blockdev driver=qcow2,node-name=drive0,file=imgleft \
+  -device virtio-blk-pci,drive=drive0,bootindex=1 \
   -netdev tap,id=nd0,ifname=${_EXTERNAL1_tap1},script=no,downscript=no \
   -device e1000,netdev=nd0,mac=${_EXTERNAL1_mac} \
   -name \"${_EXTERNAL1_name}\"
