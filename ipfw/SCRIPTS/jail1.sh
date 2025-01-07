@@ -17,9 +17,6 @@ shown.
 #  
 #set -x
 
-
-
-
 # pick up environment for this run
 . ./vm_envs.sh
 

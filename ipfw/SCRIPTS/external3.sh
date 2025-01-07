@@ -34,7 +34,7 @@ echo
 echo "NOTE!!! telnet server running!  To start QEMU telnet to localhost $_EXTERNAL3_telnetport"  
 echo 
 
-/usr/local/bin/qemu-system-x86_64 -monitor vc \
+/usr/local/bin/qemu-system-x86_64 -monitor stdio \
   -serial telnet:localhost:${_EXTERNAL3_telnetport},server=on,wait=on \
   -cpu qemu64 \
   -vga cirrus \

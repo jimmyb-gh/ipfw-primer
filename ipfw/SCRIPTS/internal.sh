@@ -37,7 +37,7 @@ echo
 #  -netdev tap,id=nd0,ifname=${_INTERNAL_tap5},script=no,downscript=no,br=${_bridge1_} \
 
 
-/usr/local/bin/qemu-system-x86_64 -monitor none \
+/usr/local/bin/qemu-system-x86_64 -monitor stdio \
   -serial telnet:localhost:${_INTERNAL_telnetport},server \
   -cpu qemu64 \
   -vga cirrus \

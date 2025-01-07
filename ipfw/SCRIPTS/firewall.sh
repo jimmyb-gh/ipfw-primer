@@ -41,7 +41,7 @@ echo
 echo "NOTE!!! telnet server running!  To start QEMU telnet to localhost $_FIREWALL_telnetport "  
 echo 
 
-/usr/local/bin/qemu-system-x86_64 -monitor none \
+/usr/local/bin/qemu-system-x86_64 -monitor stdio \
   -serial telnet:localhost:${_FIREWALL_telnetport},server=on,wait=on \
   -cpu qemu64 \
   -display gtk \

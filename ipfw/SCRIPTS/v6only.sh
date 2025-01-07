@@ -36,7 +36,7 @@ echo "NOTE!!! telnet server running!  To start QEMU telnet to localhost $_V6ONLY
 echo 
 #  -netdev tap,id=nd0,ifname=${_V6ONLY_tap5},script=no,downscript=no,br=${_bridge1_} \
 
-/usr/local/bin/qemu-system-x86_64 -monitor none \
+/usr/local/bin/qemu-system-x86_64 -monitor stdio \
   -serial telnet:localhost:${_V6ONLY_telnetport},server \
   -cpu qemu64 \
   -vga cirrus \
