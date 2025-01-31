@@ -2,19 +2,19 @@
 Scripts and code to use with the IPFW Primer book.
 
 Directories:
-* *BMP* - splash files for the virtual machines
-* *HOST_SCRIPTS* - scripts necessary for setting up the host
-* *VM_SCRIPTS* - scripts used on the VMs
+- *BMP* - splash files for the virtual machines
+- *HOST_SCRIPTS* - scripts necessary for setting up the host
+- *VM_SCRIPTS* - scripts used on the VMs
 
 Directions:
-. Download the HOST_SCRIPTS onto the FreeBSD Host
-. Use the scripts to create and set up the virtual machines (see text).
-. On each virtual machine, download VM_SCRIPTS and untar into /root
-. On the *firewall* VM, build the divert.c program (see text).
-. Optional - Download the BMP files to the location assigned in the VM startup scripts.
+1. Download the HOST_SCRIPTS onto the FreeBSD Host
+1. Use the scripts to create and set up the virtual machines (see text).
+1. On each virtual machine, download VM_SCRIPTS and untar into /root
+1. On the *firewall* VM, build the divert.c program (see text).
+1. Optional - Download the BMP files to the location assigned in the VM startup scripts.
 
 
-----
+```
 .
 |-- LICENSE
 |-- README.md
@@ -88,5 +88,5 @@ Directions:
         |   `-- index.html
         `-- v6only
             `-- index.html
-----
+```
 
