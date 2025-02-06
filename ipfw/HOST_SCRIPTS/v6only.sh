@@ -36,8 +36,8 @@ echo "NOTE!!! telnet server running!  To start QEMU telnet to localhost $_V6ONLY
 echo 
 #  -netdev tap,id=nd0,ifname=${_V6ONLY_tap5},script=no,downscript=no,br=${_bridge1_} \
 
-/usr/local/bin/qemu-system-x86_64 -monitor stdio \
-  -serial telnet:localhost:${_V6ONLY_telnetport},server \
+/usr/local/bin/qemu-system-x86_64 -monitor none \
+  -serial telnet:localhost:${_V6ONLY_telnetport},server=on,wait=off \
   -cpu qemu64 \
   -vga cirrus \
   -m ${_V6ONLY_mem}      \
@@ -48,6 +48,6 @@ echo
   -device virtio-blk-pci,drive=drive0,bootindex=1 \
   -netdev tap,id=nd0,ifname=${_V6ONLY_tap6},script=no,downscript=no \
   -device e1000,netdev=nd0,mac=${_V6ONLY_mac} \
-  -name \"${_V6ONLY_name}\"
+  -name \"${_V6ONLY_name}\"  &
 
 

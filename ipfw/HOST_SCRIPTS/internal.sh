@@ -37,8 +37,8 @@ echo
 #  -netdev tap,id=nd0,ifname=${_INTERNAL_tap5},script=no,downscript=no,br=${_bridge1_} \
 
 
-/usr/local/bin/qemu-system-x86_64 -monitor stdio \
-  -serial telnet:localhost:${_INTERNAL_telnetport},server \
+/usr/local/bin/qemu-system-x86_64 -monitor none \
+  -serial telnet:localhost:${_INTERNAL_telnetport},server=on,wait=off \
   -cpu qemu64 \
   -vga cirrus \
   -m ${_INTERNAL_mem}      \
@@ -49,6 +49,6 @@ echo
   -device virtio-blk-pci,drive=drive0,bootindex=1 \
   -netdev tap,id=nd0,ifname=${_INTERNAL_tap5},script=no,downscript=no \
   -device e1000,netdev=nd0,mac=${_INTERNAL_mac} \
-  -name \"${_INTERNAL_name}\"
+  -name \"${_INTERNAL_name}\"  &
 
 

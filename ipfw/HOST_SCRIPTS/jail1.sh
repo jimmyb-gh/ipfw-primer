@@ -52,8 +52,8 @@ echo [telnetport=${_JAIL1_telnetport}]
 #echo "NOTE!!! telnet server running!  To start QEMU telnet to localhost $_JAIL1_telnetport"  
 #echo 
 
-/usr/local/bin/qemu-system-x86_64 -monitor stdio \
-  -serial telnet:localhost:${_JAIL1_telnetport},server=on,wait=on \
+/usr/local/bin/qemu-system-x86_64 -monitor none \
+  -serial telnet:localhost:${_JAIL1_telnetport},server=on,wait=off \
   -cpu qemu64 \
   -vga cirrus \
   -m ${_JAIL1_mem}      \
@@ -64,6 +64,6 @@ echo [telnetport=${_JAIL1_telnetport}]
   -device virtio-blk-pci,drive=drive0,bootindex=1 \
   -netdev tap,id=nd0,ifname=${_JAIL1_tap12},script=no,downscript=no \
   -device e1000,netdev=nd0,mac=${_JAIL1_mac} \
-  -name \"${_JAIL1_name}\"
+  -name \"${_JAIL1_name}\"  &
 
 

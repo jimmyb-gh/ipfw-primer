@@ -41,8 +41,8 @@ echo
 echo "NOTE!!! telnet server running!  To start QEMU telnet to localhost $_FIREWALL_telnetport "  
 echo 
 
-/usr/local/bin/qemu-system-x86_64 -monitor stdio \
-  -serial telnet:localhost:${_FIREWALL_telnetport},server=on,wait=on \
+/usr/local/bin/qemu-system-x86_64 -monitor none \
+  -serial telnet:localhost:${_FIREWALL_telnetport},server=on,wait=off \
   -cpu qemu64 \
   -display gtk \
   -vga cirrus \
@@ -56,6 +56,6 @@ echo
   -device e1000,netdev=nd0,mac=${_FIREWALL_mac1} \
   -netdev tap,id=nd1,ifname=${_FIREWALL_tap4},script=no,downscript=no \
   -device e1000,netdev=nd1,mac=${_FIREWALL_mac2} \
-  -name \"${_FIREWALL_name}\" 
+  -name \"${_FIREWALL_name}\"   &
 
 

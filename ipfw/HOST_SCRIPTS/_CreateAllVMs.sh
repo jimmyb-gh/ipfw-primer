@@ -35,6 +35,11 @@ do
   qemu-img create -f qcow2 -o preallocation=full ../VM/${i}.qcow2 4G
 done
 
+
+echo "Creating jail1 VM"
+echo qemu-img create -f qcow2 -o preallocation=full ../VM/jail1.qcow2 G
+qemu-img create -f qcow2 -o preallocation=full ../VM/jail1.qcow2 12G
+
 echo
 echo "Done."
 

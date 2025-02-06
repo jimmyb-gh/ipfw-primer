@@ -37,8 +37,8 @@ echo
 echo "NOTE!!! telnet server running!  To start QEMU telnet to localhost $_DNSHOST_telnetport"  
 echo 
 
-/usr/local/bin/qemu-system-x86_64  -monitor stdio \
-  -serial telnet:localhost:${_DNSHOST_telnetport},server=on,wait=on \
+/usr/local/bin/qemu-system-x86_64  -monitor none \
+  -serial telnet:localhost:${_DNSHOST_telnetport},server=on,wait=off \
   -cpu qemu64 \
   -vga std \
   -m ${_DNSHOST_mem}      \
@@ -53,6 +53,6 @@ echo
   -device e1000,netdev=nd1,mac=${_DNSHOST_mac2} \
   -netdev tap,id=nd2,ifname=${_DNSHOST_tap11},script=no,downscript=no \
   -device e1000,netdev=nd2,mac=${_DNSHOST_mac3} \
-  -name \"${_DNSHOST_name}\"
+  -name \"${_DNSHOST_name}\"  &
 
 

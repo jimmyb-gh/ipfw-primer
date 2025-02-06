@@ -35,8 +35,8 @@ echo
 echo "NOTE!!! telnet server running!  To start QEMU telnet to localhost $_EXTERNAL2_telnetport"  
 echo 
 
-/usr/local/bin/qemu-system-x86_64 -monitor stdio \
-  -serial telnet:localhost:${_EXTERNAL2_telnetport},server=on,wait=on \
+/usr/local/bin/qemu-system-x86_64 -monitor none \
+  -serial telnet:localhost:${_EXTERNAL2_telnetport},server=on,wait=off \
   -cpu qemu64 \
   -vga cirrus \
   -m ${_EXTERNAL2_mem}      \
@@ -47,6 +47,6 @@ echo
   -device virtio-blk-pci,drive=drive0,bootindex=1 \
   -netdev tap,id=nd0,ifname=${_EXTERNAL2_tap2},script=no,downscript=no \
   -device e1000,netdev=nd0,mac=${_EXTERNAL2_mac} \
-  -name \"${_EXTERNAL2_name}\"
+  -name \"${_EXTERNAL2_name}\"  &
 
 
