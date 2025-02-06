@@ -46,7 +46,6 @@ Directions:
     |   |-- scim.sh
     |   |-- swim.sh
     |   |-- v6only.sh
-    |   |-- virtual.lan
     |   `-- vm_envs.sh
     |-- VM_CODE
     |   `-- divert.c
