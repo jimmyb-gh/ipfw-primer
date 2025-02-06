@@ -12,7 +12,8 @@ echo "Running _CreateAllVMs.sh"
 echo 
 echo "This script will create 8 virtual machines in ../VM/"
 echo
-read -p "DO YOU REALLY WANT TO CREATE NEW QEMU IMAGES OVERWRITING ANY EXISTING IMAGES? Answer YES to continue. " junk
+echo "DO YOU REALLY WANT TO CREATE NEW QEMU IMAGES OVERWRITING ANY EXISTING IMAGES?"
+read -p "Answer YES (case sensitive) to continue. " junk
 echo [${junk}]
 
 if [ "X${junk}" !=  "XYES" ]
@@ -37,7 +38,7 @@ done
 
 
 echo "Creating jail1 VM"
-echo qemu-img create -f qcow2 -o preallocation=full ../VM/jail1.qcow2 G
+echo qemu-img create -f qcow2 -o preallocation=full ../VM/jail1.qcow2 12G
 qemu-img create -f qcow2 -o preallocation=full ../VM/jail1.qcow2 12G
 
 echo

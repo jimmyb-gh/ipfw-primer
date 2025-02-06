@@ -36,8 +36,8 @@
 #
 #The file directory layout for the examples is:
 #
-#    ~/ipfw
-#          /SCRIPTS
+#    ..../ipfw
+#          /HOST_SCRIPTS
 #              _CreateAllVMs.sh   (create Qemu disks images)
 #              dnshost.sh         (run script for dns server VM)
 #              external1.sh       (run scripts for external  VMs)
@@ -74,6 +74,10 @@
 #              internal.qcow2       (Qemu disk image for an internal host)
 #              v6only.qcow2         (Qemu disk image for an ipv6only host)
 #              jail1.qcow2          (Qemu disk image for an VM with a jail)
+#          /VM_CODE
+#              divert.c             (C source code for divert example)
+#          /VM_SCRIPTS
+#              (various)            (Scripts for use on VMs. See text.)
 #
 #
 #  Start the VMs and install / test one at a time.
@@ -95,27 +99,15 @@
 #    Firewall   - pkg install bash cmdwatch lynx iperf3 nmap hping3 nginx
 #    All others - pkg install bash cmdwatch lynx iperf3 nmap hping3 nginx
 #    DNS host   - pkg install bind918  dual-dhclient bash cmdwatch lynx nginx
+#                 (use latest bind9 package)
 #
 #  Reset all IP addresses for static usage:
 #
-#  Host interface: add  172.16.10.100/24 alias  
-#  Disable any firewall (pf, ipfw, etc.) on the host. 
+#  Disable any host firewall (pf, ipfw, etc.) on the host. 
 #           BE SURE this is Ok for your environment.
-#
-#  Firewall em0 172.16.10.50/24, default gateway 172.16.10.100
-#           em1 10.10.10.50/24 
-#
-#  Firewall2 em0 as needed
-#            em1 as needed
-#
-#  External1: em0 172.16.10.10/24, default gateway 172.16.10.100
-#  External2: em0 172.16.10.20/24, default gateway 172.16.10.100
-#  External3: em0 172.16.10.30/24, default gateway 172.16.10.100
-#  Internal:  em0 10.10.10.200/24, default gateway 10.10.10.50
 #
 #  v6only  as needed
 #  dnshost as needed
-#
 #
 
 #export _BASE=/home/jpb/ipfw
@@ -151,7 +143,7 @@ export _FIREWALL2_hdsize=4G
 export _INTERNAL_hdsize=4G
 export _V6ONLY_hdsize=4G
 export _DNSHOST_hdsize=4G
-export _JAIL1_hdsize=8G
+export _JAIL1_hdsize=12G
 
 # Is this needed anymore?
 export _FBSD_ISO=${_BASE}/ISO/fbsd.iso
@@ -242,13 +234,13 @@ export _JAIL1_telnetport=4470
 
 # Bridge and Tap configurations.
 #
-# Note: em0 is used for the host interface.
+# Note: hostif is used for the host interface.
 #       Change as needed.
 #
 # Two bridge configuration
 # Standard examples
 #
-#                        em0
+#                        hostif
 #                         |
 #  External1(tap1) -----bridge0------(tap0)Firewall
 #  External2(tap2) -----+ |                  (tap4)
@@ -257,46 +249,5 @@ export _JAIL1_telnetport=4470
 #                                              |
 #  Internal(tap5) -----------------------------+
 #
-#  sudo /bin/sh mkbr.sh reset bridge0 tap0 tap1 tap2 tap3 em0
+#  sudo /bin/sh mkbr.sh reset bridge0 tap0 tap1 tap2 tap3 hostif bridge1 tap4 tap5
 #
-#
-#
-# Two bridge configuration
-# NAT & LSNAT examples
-#
-#
-#
-#                                    (firewall does LSNAT load balancing)
-#  External1(tap1) -----bridge0------(tap0)Firewall
-#  External2(tap2) -----+ |                  (tap4)
-#  External3(tap3) -------+                    |
-#  (these function as internal machines)     bridge1----em0
-#                                              |
-#  Internal(tap5) -----------------------------+
-#  (this functions as an external machine)
-#
-#  sudo /bin/sh mkbr.sh reset bridge0 tap0 tap1 tap2 tap3  bridge1 tap4 tap5 em0
-#
-#
-#
-# Two bridge configuration
-# NAT64/DNS64 example
-#
-#                       ipv4 only      NAT64 Translator
-#  External1(tap1) ------bridge0-----(tap0)Firewall
-#  (ipv4 only)             +                 (tap4)
-#  (webserver)             |                   +
-#                   dnshost(tap7)              |
-#                    (DNS server)              |
-#                    (running DNS64)           |
-#                        (tap8)                |
-#                          |                   |
-#                          +                   |
-#                     ipv6 only                |
-#  v6only(tap6) --------bridge1----------------+
-#  (v6 only host)
-#
-#  sudo /bin/sh mkbr.sh reset bridge0 tap0 tap1 tap7  bridge1 tap4 tap6 tap8
-#
-#
-
